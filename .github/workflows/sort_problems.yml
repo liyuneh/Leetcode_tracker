@@ -1,1 +1,40 @@
+name: Sort LeetCode Problems
 
+on:
+  push:
+    paths:
+      - '**/*.py'    # Trigger when any Python file is pushed
+
+jobs:
+  sort:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Move problems based on difficulty
+        run: |
+          for file in *.py; do
+            # Skip if no files found
+            [ -e "$file" ] || continue
+
+            if grep -q "# Difficulty: Easy" "$file"; then
+              mkdir -p Easy
+              git mv "$file" Easy/
+            elif grep -q "# Difficulty: Medium" "$file"; then
+              mkdir -p Medium
+              git mv "$file" Medium/
+            elif grep -q "# Difficulty: Hard" "$file"; then
+              mkdir -p Hard
+              git mv "$file" Hard/
+            else
+              echo "Skipping $file: No difficulty tag found"
+            fi
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git commit -am "Organized problems by difficulty" || echo "No changes to commit"
+          git push

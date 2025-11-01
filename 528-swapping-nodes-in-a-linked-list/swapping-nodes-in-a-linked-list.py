@@ -5,8 +5,6 @@
 #         self.next = next
 class Solution:
     def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        dummy = ListNode(0 , head)
-        prev = dummy 
         cur = head
         count = 0
         while cur:

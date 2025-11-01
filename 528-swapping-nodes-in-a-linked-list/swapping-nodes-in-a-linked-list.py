@@ -7,17 +7,17 @@ class Solution:
     def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         cur = head
         count = 0
+        ans = []
         while cur:
             count += 1
+            ans.append(cur.val)
             cur = cur.next
-        l  = head
-        for _ in range(k - 1):
-            l = l.next
-        r = head
-        for _ in range(count - k):
-            r = r.next
-        l.val , r.val = r.val, l.val
+        ans[k-1] , ans[count- k ] = ans[count - k] , ans[k-1]
 
+        head = ListNode(ans[0])
+        cur = head
+
+        for val in ans[1:]:
+            cur.next = ListNode(val)
+            cur = cur.next 
         return head
-            
-        

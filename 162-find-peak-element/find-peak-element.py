@@ -1,10 +1,13 @@
 class Solution:
-    def findPeakElement(self, nums: List[int]) -> int:
-        left , right = 0 , len(nums) - 1
-        while left < right :
-            middle = (left + right) // 2
-            if nums[middle] > nums[middle + 1]:
-                right = middle
-            else:
-                left = middle + 1
-        return left
+    def findPeakElement(self, arr):
+        n = len(arr)
+        if n == 1:
+            return 0
+        if arr[0] > arr[1]:
+            return 0
+        if arr[-1] > arr[-2]:
+            return n-1
+        for i in range(1, n-1):
+            if arr[i] > arr[i-1] and arr[i] > arr[i+1]:
+                return i
+        return -1

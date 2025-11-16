@@ -8,4 +8,4 @@ class Solution:
                 l = r + 1
             else:
                 count += (r - l + 1)
-        return count % mode
+        return count if count < mode else count % mode

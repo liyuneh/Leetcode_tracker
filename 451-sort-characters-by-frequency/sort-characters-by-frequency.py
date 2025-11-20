@@ -1,6 +1,9 @@
 class Solution:
     def frequencySort(self, s: str) -> str:
-        counter = Counter(s)
+        table = defaultdict(int)
 
-        ans = "".join(sorted(s, key= lambda x:(-counter[x], -ord(x))))
+        for char in s:
+            table[char] += 1
+        sort_s = sorted(table.keys(), key = lambda x : -table[x] )
+        ans = "".join(char* table[char]  for char in sort_s)
         return ans

@@ -1,10 +1,12 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        table = defaultdict(int)
-        for ch in s:
-            table [ch] += 1
-        for i in range(len(s)):
-            if table[s[i]] == 1:
-                return i
-        return -1
+        q = deque()
+        freq = {}
         
+        for i , ch in enumerate(s):
+            freq [ch] = freq.get(ch, 0) + 1
+            q.append((ch, i))
+
+            while q and freq[q[0][0]] > 1:
+                q.popleft()
+        return q[0][1] if q else -1

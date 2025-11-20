@@ -3,14 +3,14 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        left ,cur, right = 0 ,0, len(nums) - 1
-        while cur <= right:
-            if nums[cur] == 0:
-                nums[left] , nums[cur] = nums[cur], nums[left]
-                left += 1
-                cur += 1
-            elif nums[cur] == 2:
-                nums[right] , nums[cur] = nums[cur] , nums[right]
-                right -= 1
+        l , r , mid = 0 , len(nums) - 1, 0
+        while mid <= r:
+            if nums[mid] == 0:
+                nums[l] , nums[mid] = nums[mid], nums[l]
+                l += 1
+                mid += 1
+            elif nums[mid] == 2:
+                nums[r] , nums[mid]  = nums[mid] , nums[r]
+                r -= 1
             else:
-                cur += 1
+                mid += 1

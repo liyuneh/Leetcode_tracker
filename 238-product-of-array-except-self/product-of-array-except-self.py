@@ -1,12 +1,15 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        n =len(nums)
+        n = len(nums)
         ans = [1] * n
-        leftsum , rightsum = 1 , 1
+        pref = 1
         for i in range(n):
-            ans[i] = leftsum
-            leftsum *= nums[i]
-        for j in range(len(nums)-1, -1, -1):
-            ans[j] *= rightsum
-            rightsum *= nums[j]
+            ans [i] = pref
+            pref *= nums[i]
+        print(ans)
+        suff = 1
+        for i in range(n - 1, -1, -1):
+            ans[i] *= suff
+            suff *= nums[i]
+        print(ans)
         return ans

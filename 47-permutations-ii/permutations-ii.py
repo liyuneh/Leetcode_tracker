@@ -9,5 +9,5 @@ class Solution:
             t = tuple(prem)
             if t not in seen:
                 seen.add(t)
-                ans.append(list(t))
+                ans.append(t)
         return ans

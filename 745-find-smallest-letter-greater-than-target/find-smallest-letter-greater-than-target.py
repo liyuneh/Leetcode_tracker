@@ -1,10 +1,9 @@
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
-        left , right = 0 , len(letters) - 1
-        while left <= right:
-            middle = left + (right - left) // 2
-            if ord(letters[middle]) <= ord(target):
-                left = middle + 1
-            else:
-                right = middle - 1
-        return letters[left % len(letters)]
+        s = sorted(letters)
+        if ord(target) >= ord(s[-1]):
+            return s[0]
+        for i in range(len(s)):
+            if ord(s[i]) > ord(target):
+                return s[i]
+    

@@ -1,12 +1,9 @@
 class Solution:
     def getHint(self, secret: str, guess: str) -> str:
         freq = {}
-        taken = {}
 
         for i , n in enumerate(secret):
             freq[i] = n
-        for i , n in enumerate(guess):
-            taken[i] = n
         bulls = 0
         seen = set()
         for i in range(len(guess)):
@@ -14,7 +11,6 @@ class Solution:
                 bulls += 1
                 seen.add(i)
                 del freq[i]
-                del taken[i]
         cows = 0
         for i in range(len(guess)):
             for key , val in freq.items():

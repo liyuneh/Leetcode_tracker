@@ -8,7 +8,10 @@ class Solution:
             if nums[r] != 0 and nums[l] == 0:
                 nums[r], nums[l] = nums[l], nums[r]
                 l += 1
-            elif nums[r] == 0 and  nums[l] != 0:
+            elif nums[r] != 0 and nums[l] != 0:
+                l += 1
+                r += 1
+            elif nums[r] == 0 and nums[l] != 0:
                 l = r
             
         

@@ -7,18 +7,18 @@
 class Solution:
     def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
         ans = 0
-        def dfs(node, path):
-            if not node:
-                return 
-            nonlocal ans
+        stack = [(root, 0)]
+        while stack:
+            node, path = stack.pop()
             path <<= 1
             if node.val:
                 path |= 1
             if not node.left and not node.right:
                 ans += path
-                return
-            dfs(node.left, path)
-            dfs(node.right, path)
-        dfs(root, 0)
+                continue
+            if node.left:
+                stack.append((node.left, path))
+            if node.right:
+                stack.append((node.right, path))
         return ans
 

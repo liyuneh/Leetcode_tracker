@@ -16,9 +16,7 @@ class Solution:
             pref += new[i]
             prefs[i] = pref
         for i in range(len(ans)):
-            ans[i] += prefs[i]
-        for i in range(len(ans)):
-            ans[i] = (ans[i] + 26) % 26
-        for i in range(len(ans)):
-            ans[i] = chr(97 + ans[i])
+            ans[i] = chr(97 + (ans[i] + prefs[i] + 26) % 26)
+            
+
         return "".join(ans)

@@ -3,7 +3,6 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-import math
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if not head or not head.next:
@@ -13,12 +12,9 @@ class Solution:
         while cur:
             count += 1
             cur = cur.next
-
-        
-        mid_index = count // 2
         cur = head
-        for _ in range(mid_index - 1):
+        mid = count // 2
+        for _ in range(mid - 1):
             cur = cur.next
         cur.next = cur.next.next
-
         return head

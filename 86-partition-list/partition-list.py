@@ -5,28 +5,24 @@
 #         self.next = next
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
-        dummy = ListNode(-1, head)
-        prev = dummy
-        cur = dummy.next
-        l = dummy.next
-        r = dummy
-        flag = False
-        while cur:
-            if r.val < x:
-                prev = r
-            if not flag and cur.val >= x:
-                l = cur
-                flag = True
-            if cur.val < x and l.val >= x:
-                nxt = cur.next
-                r.next = cur.next
-                cur.next = l
-                print(prev.val)
-                prev.next = cur
-                prev = prev.next
-                cur = nxt
-            else:
-                cur = cur.next
-                r = r.next
+        left = ListNode(None)
+        l = left
+        right = ListNode(None)
+        r = right
 
-        return dummy.next
+        cur = head
+        while cur:
+            if cur.val < x:
+                newnode = ListNode(cur.val)
+                left.next = newnode
+                left = left.next
+            else:
+                newnode = ListNode(cur.val)
+                right.next = newnode
+                right = right.next
+            cur =  cur.next
+
+        left.next = r.next
+        # print(l, r)
+        return l.next
+        

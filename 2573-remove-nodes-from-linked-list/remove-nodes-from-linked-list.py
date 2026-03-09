@@ -11,6 +11,7 @@ class Solution:
             cur.next = prev
             prev = cur
             cur = nxt
+    
 
         dummy = ListNode(None)
         cur = prev
@@ -23,15 +24,16 @@ class Solution:
                 last = last.next
                 mx = cur.val
             cur = cur.next
-        pref, cur = None, dummy
+        pref, cur = None, dummy.next
         while cur:
             nxt = cur.next
             cur.next = pref
             pref = cur
             cur = nxt
-        dom = ListNode(0, pref)
-        cur = dom
-        while cur.next and cur.next.val:
-            cur = cur.next
-        cur.next = None
-        return dom.next
+        return pref
+        # dom = ListNode(0, pref)
+        # cur = dom
+        # while cur.next and cur.next.val:
+        #     cur = cur.next
+        # cur.next = None
+        # return dom.next

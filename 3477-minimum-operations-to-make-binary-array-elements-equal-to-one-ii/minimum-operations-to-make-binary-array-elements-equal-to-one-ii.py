@@ -3,7 +3,7 @@ class Solution:
         if 0 not in nums:
             return 0
         ind = nums.index(0)
-        print(ind)
+        # print(ind)
         l = ind
         count = 0
         for r in range(ind,len(nums)):

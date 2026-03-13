@@ -2,23 +2,14 @@ class Solution:
     def jump(self, nums: List[int]) -> int:
         if len(nums) == 1:
             return 0
-        opt = 1
-        ans = [[nums[0], 0]]
-        for i in range(1,len(nums)):
-            if not ans:
-                return opt
-            if ans[-1][0] >= (len(nums)- 1 - ans[-1][1] ):
-                return opt
-            else:
-                mx = ans[-1][0]
-                b = ans[-1][1]
-                x, y = ans.pop()
-                for j in range(y  + 1, (x + y) + 1):
-                    if nums[j] + j > mx + b:
-                        mx = nums[j]
-                        b = j
-                if mx and b:
-                    ans.append([mx,b])
-                    opt += 1
-        return 
+        ans=0
+        opt = 0
+        far= 0
+        for i in range(len(nums) - 1):
+            far = max(far, i + nums[i])
+            if i == opt:
+                ans += 1
+                opt = far
+        
+        return ans
             

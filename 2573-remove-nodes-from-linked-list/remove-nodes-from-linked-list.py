@@ -5,35 +5,15 @@
 #         self.next = next
 class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev , cur = None, head
-        while cur:
-            nxt = cur.next
-            cur.next = prev
-            prev = cur
-            cur = nxt
-    
-
-        dummy = ListNode(None)
-        cur = prev
-        last = dummy
-        mx = 0
-        while cur :
-            if cur.val >= mx:
-                newnode = ListNode(cur.val)
-                last.next = newnode
-                last = last.next
-                mx = cur.val
-            cur = cur.next
-        pref, cur = None, dummy.next
-        while cur:
-            nxt = cur.next
-            cur.next = pref
-            pref = cur
-            cur = nxt
-        return pref
-        # dom = ListNode(0, pref)
-        # cur = dom
-        # while cur.next and cur.next.val:
-        #     cur = cur.next
-        # cur.next = None
-        # return dom.next
+        def back(node):
+            # print(node)
+            if   not node.next: return node
+            node.next = back(node.next)
+            # print(node.next)
+            if node.next and node.val < node.next.val:
+                return node.next
+            else:
+                return node
+        return back(head)
+            
+            

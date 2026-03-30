@@ -6,7 +6,6 @@ class Solution:
         def backtrack():
             if len(path) == n:
                 res.append("".join(path))
-                print(path)
                 return 
             for i in range(len(s)):
                 if path and path[-1] == s[i]:

@@ -16,9 +16,9 @@ class Solution:
                     continue
                 if path:
                     prev = int(path[-1])
-                    if pattern[len(path) - 1] == 'I' and prev >= i:
+                    if pattern[len(path) - 1] == 'I' and prev > i:
                         continue
-                    if pattern[len(path) - 1] == 'D' and prev <= i:
+                    if pattern[len(path) - 1] == 'D' and prev < i:
                         continue
                 used[i] = True
                 path.append(str(i))

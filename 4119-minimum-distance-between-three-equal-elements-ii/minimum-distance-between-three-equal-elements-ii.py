@@ -7,7 +7,6 @@ class Solution:
         for key , val in freq.items():
             if len(val ) >= 3:
                 ans[key] = val
-        # print(ans)
 
         mx = max(len(val) for val in freq.values())
         if mx < 3:
@@ -19,5 +18,4 @@ class Solution:
                 x = abs(val[i] - val[i+1]) + abs(val[i] - val[i+2]) + abs(val[i+1] - val[i+2])
                 mn = min(mn , x)
             mx = min(mx, mn)
-        # print(mx)
         return mx

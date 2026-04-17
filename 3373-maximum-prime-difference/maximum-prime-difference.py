@@ -13,10 +13,13 @@ class Solution:
                     return False
                 i += 6
             return True
-        ans = []
+        prev = -1
         for i in range(len(nums)):
             if is_prime(nums[i]):
-                ans.append(i)
-        
-        
-        return ans[-1] - ans[0] if len(ans) != 1 else 0
+                prev = i
+                break
+        if prev == -1:
+            return -1
+        for i in range(len(nums)- 1, -1, -1):
+            if is_prime(nums[i]):
+                return i - prev

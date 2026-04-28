@@ -1,26 +1,23 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        white, gray , black = 1, 2, 3
-        color = {k:white for k in range(numCourses)}
-        no_cycle = True
         graph = [[] for _ in range(numCourses)]
-        for a, b in prerequisites:
-            graph[b].append(a)
+        incoming = [0 for _ in range(numCourses)]
+        q = deque()
+        sortedone = []
+        for course , pre in prerequisites:
+            graph[pre].append(course)
+            incoming[course] += 1
         
-        def dfs(node):
-            if color[node] == gray:
-                return False
-            if color[node] == black:
-                return True
-            color[node] = gray
-            for ch in graph[node]:
-                if not dfs(ch):
-                    return False
-            color[node] = black
-            return True
-        for i in range((numCourses)):
-            if color [i] == white:
-                if not dfs(i):
-                    return False
-                
-        return True
+        for course in range(numCourses):
+            if incoming[course] == 0:
+                q.append(course)
+        while q:
+            course = q.popleft()
+            sortedone.append(course)
+
+            for ne in graph[course]:
+                incoming[ne] -= 1
+                if incoming[ne] == 0:
+                    q.append(ne)
+        print(sortedone)
+        return len(sortedone) == numCourses

@@ -8,20 +8,19 @@ class Solution:
         for c, pre in relations:
             graph[c].append(pre)
             indegree[pre] += 1
-        
         q = deque()
-        for c in range(1, n + 1):
-            if indegree[c] == 0:
-                q.append(c)
-        count = 0
-        res = 0
+        dist = [0] * (n + 1)
+        for i in range(1, n + 1):
+            if indegree[i] == 0:
+                q.append(i)
         while q:
             for _ in range(len(q)):
                 node = q.popleft()
-                ans[node] += time[node - 1]
-                for ch in graph[node]:
-                    ans[ch] = max(ans[ch], ans[node])
-                    indegree[ch] -= 1
-                    if indegree[ch] == 0:
-                        q.append(ch)
-        return max(ans)  
+                dist[node] += time[node - 1]
+                for ne in graph[node]:
+                    indegree [ne] -= 1
+                    dist[ne] = max(dist[ne], dist[node])
+                    if indegree[ne] == 0:
+                        q.append(ne) 
+        print(max(dist))
+        return max(dist)

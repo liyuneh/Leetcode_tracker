@@ -1,4 +1,3 @@
-from collections import defaultdict
 class Solution:
     def countAnagrams(self, s: str) -> int:
         count = 1

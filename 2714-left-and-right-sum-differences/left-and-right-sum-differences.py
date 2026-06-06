@@ -7,7 +7,7 @@ class Solution:
         for i in range(len(nums) - 2, -1 , -1):
             right.append(right[-1] + nums[i + 1])
         right.reverse()
-        print(left, right)
+        # print(left, right)
         for i in range(len(nums)):
             nums[i] = abs(left[i] - right[i])
         return nums

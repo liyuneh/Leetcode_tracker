@@ -6,14 +6,15 @@
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
         ans = []
-        count = 0
-        cur = head
-        while cur:
+        cur = fast = head
+        while fast and fast.next:
             ans.append(cur.val)
-            count += 1
             cur = cur.next
+            fast = fast.next.next
+        
         total = 0
-        for i in range(count):
-            total = max(total, ans[i] + ans[count-1-i])
-        # print(total)
+        while cur:
+            total = max(total, cur.val + ans.pop())
+            cur = cur.next
+        
         return total

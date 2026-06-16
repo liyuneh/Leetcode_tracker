@@ -1,14 +1,13 @@
 class Solution:
     def processStr(self, s: str) -> str:
-        res = []
+        res = ""
         for c in s:
             if c == "*":
-                if res:
-                    res.pop()
+                res = res[:-1]
             elif c == "#":
-                res = res + res
+                res += res
             elif c == "%":
-                res.reverse()
+                res = res[::-1]
             else:
-                res.append(c)
-        return "".join(res)
+                res += c
+        return res

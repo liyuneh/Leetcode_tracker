@@ -3,7 +3,7 @@ class Solution:
         dxn = [(-1, 0), (0, -1), (1,0), (0,1)]
         n , m = len(grid), len(grid[0])
         def inbound(i, j): return 0<= i < n and 0 <= j < m
-        def bfs(i, j , visited):
+        def bfs(i, j, visited):
             q = deque([(i, j)])
             visited.add((i, j))
             ans = 0

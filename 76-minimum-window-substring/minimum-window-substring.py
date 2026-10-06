@@ -1,20 +1,17 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        counter = Counter()
+        new = Counter()
         counter_t = Counter(t)
 
-        i , l = 0 ,0 
+        mn_str = ""
         mn = float("inf")
-        mn_string = ""
-        ans = []
-        while i < len(s):
-            counter[s[i]] += 1
-            while counter >= counter_t:
-                if i - l + 1 < mn:
+        l = 0
+        for i in range(len(s)):
+            new[s[i]] += 1
+            while counter_t <= new:
+                if mn >= i - l + 1:
                     mn = i - l + 1
-                    mn_string = s[l:i+1]
-                counter[s[l]] -= 1
+                    mn_str = s[l:i+1]
+                new[s[l]] -= 1
                 l += 1
-            i += 1
-        
-        return mn_string
+        return mn_str

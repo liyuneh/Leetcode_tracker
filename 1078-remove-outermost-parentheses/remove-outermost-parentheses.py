@@ -14,5 +14,5 @@ class Solution:
                 q = deque()
             else:
                 q.append(c)
-        print(ans)
+        # print(ans)
         return "".join(ans)

@@ -7,7 +7,7 @@ class Solution:
             x = str(nums[i])
             now.append((sum(int(digit) for digit in x), nums[i]))
         now.sort()
-        print(now)
+        # print(now)
         freq = {}
         for i in range(len(now)):
             freq[now[i][1]] = i
@@ -29,5 +29,5 @@ class Solution:
                 j = new[j]
                 cycle += 1
             swap += (cycle - 1)
-        print(swap)
+        # print(swap)
         return swap

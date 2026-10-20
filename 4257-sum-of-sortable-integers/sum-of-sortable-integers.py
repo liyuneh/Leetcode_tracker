@@ -23,9 +23,9 @@ class Solution:
                 if mn < prev : return False
                 prev = mx
             return True
-        
+        # print(ans)
         count = 0
         for d in ans[n]:
             if valid(d): count += d
-        print(count)
+        
         return count

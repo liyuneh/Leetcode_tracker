@@ -4,10 +4,9 @@ class Solution:
             return 0
         if reversed(nums) == sorted(nums):
             return 1
-        mn = min(nums)
         k = 0
         for i in range(len(nums)):
-            if nums[i] == mn:
+            if nums[i] == 0:
                 k = i
                 break     
         ans = nums[:k ]

@@ -9,8 +9,7 @@ class Solution:
             if nums[i] == 0:
                 k = i
                 break     
-        ans = nums[:k ]
-        ans.reverse()
+        ans = nums[:k ][::-1]
         ans1 = nums[k + 1: ][::-1]
         classic = [0] + ans + ans1
         new =  [0] + ans1[::-1] + ans[::-1]

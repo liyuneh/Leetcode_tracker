@@ -14,7 +14,9 @@ class Solution:
         ans.reverse()
         ans1.reverse()
         classic = [0] + ans + ans1
-        new =  [0] + ans1[::-1] + ans[::-1]
+        ans1.reverse()
+        ans.reverse()
+        new =  [0] +ans1 + ans
         if classic != sorted(classic) and new != sorted(new):
             return -1
         if classic == sorted(classic):

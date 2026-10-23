@@ -11,5 +11,4 @@ class Solution:
                     found = True
             if not found:
                 dp[i] = 0
-        print(dp)
         return dp[n-1] - 1

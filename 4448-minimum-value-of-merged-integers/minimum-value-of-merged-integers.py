@@ -6,6 +6,6 @@ class Solution:
             x = str(nums[l]) + str(nums[r])
             ans.append(int(x))
             l , r = l + 2, r + 2
-        print(ans)
+        # print(ans)
         ans.sort()
         return ans[0]

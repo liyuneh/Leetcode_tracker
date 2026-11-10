@@ -1,7 +1,7 @@
 class Solution:
     def climbStairs(self, n: int, cost: List[int]) -> int:
         
-        @cache
+        @lru_cache
         def dp(i):
 
             if i >= n:

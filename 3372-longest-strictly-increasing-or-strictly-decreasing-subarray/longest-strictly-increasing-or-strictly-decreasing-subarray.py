@@ -31,23 +31,22 @@ class Solution:
                     q.popleft()
                 q.append(c)
         
-        # print(ans, len(q))
-        # ans = 1
-        # cnt = 1
-        # for i in range(1, len(nums)):
-        #     if nums[i] > nums[i - 1]:
-        #         cnt  += 1
-        #     else:
-        #         ans = max(ans, cnt)
-        #         cnt = 1
-        # # print(ans, cnt)/
-        # ans = max(ans,cnt)
-        # cnt1 = 1
-        # for i in range(1, len(nums)):
-        #     if nums[i] < nums[i-1]:
-        #         cnt1 += 1
-        #     else:
-        #         ans = max(ans, cnt1)
-        #         cnt1 = 1
-        # ans = max(ans, cnt1)
-        return max(ans, len(q))
+        answer = 1
+        cnt = 1
+        for i in range(1, len(nums)):
+            if nums[i] > nums[i - 1]:
+                cnt  += 1
+            else:
+                answer = max(answer, cnt)
+                cnt = 1
+        # print(answer, cnt)
+        answer = max(answer,cnt)
+        cnt1 = 1
+        for i in range(1, len(nums)):
+            if nums[i] < nums[i-1]:
+                cnt1 += 1
+            else:
+                answer = max(answer, cnt1)
+                cnt1 = 1
+        answer = max(answer, cnt1)
+        return max(answer,max(ans, len(q)))

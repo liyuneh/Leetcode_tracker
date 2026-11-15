@@ -26,8 +26,8 @@ class Solution:
                     now.append([freeE + 1, end])
             elif start <= freeE and end > freeE:
                 now.append([freeE + 1,end])
-        print(now)
-        print()
+        # print(now)
+        # print()
         st = []
         for start , end in now:
             if not st:
